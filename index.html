@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=880px,  initial-scale=1.0"/>
+
+  <title>Kouser Sarkar – CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --yellow:  #F5A623;
+      --dark:    #2C2C2C;
+      --dark2:   #1E1E1E;
+      --sidebar-bg: #2C2C2C;
+      --white:   #FFFFFF;
+      --light-gray: #F7F7F7;
+      --text-gray: #666;
+      --text-light: #999;
+      --accent-bar: #F5A623;
+    }
+
+    html, body {
+      background: #e8e8e8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: 'Open Sans', sans-serif;
+      padding: 20px 20px;
+    }
+
+    /* ── CARD ── */
+    .cv {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      width: 860px;
+      min-height: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      background: var(--white);
+      position: relative;
+      animation: fadeUp .6s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ════════════════════════════════
+       LEFT SIDEBAR
+    ════════════════════════════════ */
+    .sidebar {
+      background: var(--sidebar-bg);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* diagonal yellow accent top-left */
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 270px; height: 200px;
+      background: var(--yellow);
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      z-index: 0;
+    }
+    /* small dark triangle that cuts the corner */
+    .sidebar::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 80px; height: 80px;
+      background: var(--dark2);
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+      z-index: 1;
+    }
+
+    /* profile photo block */
+    .profile-photo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .profile-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid var(--white);
+      object-fit: cover;
+      background: #888;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .profile-photo img {
+      width: 100%; height: 100%; fill: #bbb;
+    }
+
+    /* sidebar sections */
+    .s-section {
+      padding: 0 24px;
+      margin-top: 5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .s-section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .s-section-title .icon {
+      width: 28px; height: 28px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .s-section-title .icon svg {
+      width: 18px; height: 18px; fill: var(--white);
+    }
+
+    /* dashed divider */
+    .s-divider {
+      border: none;
+      border-top: 1px dashed rgba(255,255,255,.2);
+      margin: 24px 24px;
+    }
+
+    /* contact items */
+    .contact-list { list-style: none; }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,.8);
+      line-height: 1.5;
+    }
+    .contact-list li .c-icon {
+      width: 20px; height: 20px;
+      /*background: var(--yellow);*/
+      border: 1px solid var(--yellow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .contact-list li .c-icon svg {
+      width: 11px; height: 11px; fill: var(--yellow);
+    }
+
+    /* reference items */
+    .ref-item { margin-bottom: 18px; }
+    .ref-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 4px;
+    }
+    .ref-item p {
+      font-size: 10.5px;
+      color: rgba(255,255,255,.7);
+      line-height: 1.6;
+    }
+    .ref-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+    .ref-item-row { display: flex; align-items: flex-start; }
+
+    /* education items */
+    .edu-item { margin-bottom: 16px; }
+    .edu-item-row { display: flex; align-items: flex-start; gap: 10px; }
+    .edu-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 3px;
+    }
+    .edu-item p {
+      font-size: 10.5px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════════════
+       RIGHT MAIN CONTENT
+    ════════════════════════════════ */
+    .main {
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* header */
+    .main-header {
+      padding: 32px 36px 24px;
+      border-bottom: 1px solid #eee;
+      position: relative;
+    }
+    .main-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .main-header h1 span { color: var(--yellow); }
+    .main-header .subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-gray);
+      margin-top: 8px;
+    }
+    /* yellow accent bar under name */
+    .header-bar {
+      width: 50px; height: 3px;
+      background: var(--yellow);
+      margin-top: 14px;
+    }
+
+    /* main sections */
+    .m-section {
+      padding: 24px 36px 0;
+    }
+    .m-section:last-child { padding-bottom: 36px; }
+
+    .m-section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .m-section-title .icon {
+      width: 26px; height: 26px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .m-section-title .icon svg {
+      width: 13px; height: 13px; fill: var(--dark);
+    }
+
+    /* about */
+    .about-text {
+      font-size: 12px;
+      color: var(--text-gray);
+      line-height: 1.8;
+      text-align: justify;
+      padding-bottom: 20px;
+    }
+
+    /* job experience */
+    .job-item {
+      margin-bottom: 22px;
+    }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .job-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .job-date {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+    .job-company {
+      font-size: 11px;
+      color: var(--yellow);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+    .job-desc {
+      font-size: 11.5px;
+      color: var(--text-gray);
+      line-height: 1.7;
+    }
+
+    /* m-divider */
+    .m-divider {
+      height: 1px;
+      background: #eee;
+      margin: 4px 36px 0;
+    }
+
+    /* skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 30px;
+    }
+    .skill-item { }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--dark);
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .skill-bar-bg {
+      height: 5px;
+      background: #e9e9e9;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .skill-bar-fill {
+      height: 100%;
+      background: var(--yellow);
+      border-radius: 3px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.4,0,.2,1);
+    }
+    .language-grid {
+      display: grid;
+      grid-template-columns: 1fr ;
+      gap: 10px 30px;
+    }
+    .language-grid .skill-label {
+      color: var(--white);
+    }
+
+    /* Interests */
+    .interests-grid {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      padding: 14px 0px;
+    }
+    .interest-icon {
+      width: 45px; height: 45px;
+      border: 1.5px solid var(--orange);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--yellow);
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="cv">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="sidebar">
+
+    <!-- Profile Photo -->
+    <div class="profile-photo-wrap">
+      <div class="profile-photo">
+        <!-- placeholder silhouette -->
+          <img viewBox="0 0 100 100" src="kouser.jpeg">
+          <circle cx="50" cy="36" r="22"/>
+          <ellipse cx="50" cy="85" rx="34" ry="22"/>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="s-section">
+      <div class="s-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4.625 22q-.4 0-.725-.325t-.325-.725v-2.625q0-2.25 1.4-3.975t3.6-2.2q-1 .7-1.55 1.762t-.55 2.288v4.75q0 .275.075.55t.25.5zM8.3 22q-.425 0-.737-.312t-.313-.738V16.2q0-1.75 1.238-2.975T11.475 12H16.2q1.75 0 2.975 1.225T20.4 16.2v1.6q0 1.75-1.225 2.975T16.2 22zM12 9.9q-1.65 0-2.8-1.15t-1.15-2.8t1.15-2.8T12 2t2.8 1.15t1.15 2.8t-1.15 2.8T12 9.9"/></svg>
+        </span>
+        Contact Me
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="c-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></span>
+          <span>+880-175-088-0802<br/>+880-175-088-0802</span>
+        </li>
+        <li>
+          <span class="c-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
+          <span>www.yourwebsite.com<br/>kousersarkar@outlook.com</span>
+        </li>
+        <li>
+          <span class="c-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5S13.4 11.5 12 11.5z"/></svg></span>
+          <span> Bogura Sadar<br/>Bogura - 5800 Bangladesh</span>
+        </li>
+      </ul>
+    </div>
+
+    <hr class="s-divider"/>
+
+    <!-- Education -->
+    <!-- <div class="s-section">
+      <div class="s-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M5 13.2V17l7 4 7-4v-3.8L12 17l-7-3.8zM12 3L1 9l11 6 9-4.9V17h2V9L12 3z"/></svg>
+        </span>
+        Education
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-item-row">
+          <span class="ref-dot" style="margin-top:4px"></span>
+          <div>
+            <h4>Stanford University</h4>
+            <p>Master Degree Graduate<br/>2011 – 2013</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-item-row">
+          <span class="ref-dot" style="margin-top:4px"></span>
+          <div>
+            <h4>University of Chicago</h4>
+            <p>Bachelor Degree Graduate<br/>2007 – 2010</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="s-divider"/> -->
+
+
+    <!-- References -->
+    <div class="s-section">
+      <div class="s-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.7 0 3-1.3 3-3s-1.3-3-3-3-3 1.3-3 3 1.3 3 3 3zm-8 0c1.7 0 3-1.3 3-3S9.7 5 8 5 5 6.3 5 8s1.3 3 3 3zm0 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5c0-2.3-4.7-3.5-7-3.5zm8 0c-.3 0-.6 0-1 .1 1.2.8 2 1.9 2 3.4V19h6v-2.5c0-2.3-4.7-3.5-7-3.5z"/></svg>
+        </span>
+        References
+      </div>
+
+      <div class="ref-item">
+        <div class="ref-item-row">
+          <span class="ref-dot" style="margin-top:4px"></span>
+          <div>
+            <h4>Darwin B. Magana</h4>
+            <p>2813 Shobe Lane Mancos, CO.<br/>Tel: +1-970-533-3393<br/>Email: www.yourwebsite.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="ref-item">
+        <div class="ref-item-row">
+          <span class="ref-dot" style="margin-top:4px"></span>
+          <div>
+            <h4>Robert J. Belvin</h4>
+            <p>2119 Fairfax Drive Newark, NJ.<br/>Tel: +1-908-987-5103<br/>Email: www.yourwebsite.com</p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <hr class="s-divider"/>
+
+    <!-- Language Skills -->
+    <div class="s-section" style="padding-bottom:36px;">
+      <div class="s-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 22q-.825 0-1.412-.587T2 20V10q0-.825.588-1.412T4 8h16q.825 0 1.413.588T22 10v10q0 .825-.587 1.413T20 22zm4-3h8v-2H8zm-3-3h2v-2H5zm3 0h2v-2H8zm3 0h2v-2h-2zm3 0h2v-2h-2zm3 0h2v-2h-2zM5 13h2v-2H5zm3 0h2v-2H8zm3 0h2v-2h-2zm3 0h2v-2h-2zm3 0h2v-2h-2zM6 6V1h2v1.525Q8.8 1.8 9.825 1.4T12 1q2.2 0 3.875 1.413T17.9 6h-2.05q-.35-1.325-1.412-2.162T12 3q-.75 0-1.425.263T9.375 4H11v2z"/></svg>
+        </span>
+        Language Skills
+      </div>
+
+      <div class="language-grid">
+        <div class="skill-item">
+          <div class="skill-label"><span>Bangla</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="100"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>English</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="80"></div></div>
+        </div>
+        <!-- <div class="skill-item">
+          <div class="skill-label"><span>Microsoft Word</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Microsoft Powerpoint</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="65"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>HTML5 / CSS3</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="90"></div></div>
+        </div> -->
+      </div>
+    </div>
+
+
+    <hr class="s-divider"/>
+
+
+  <!-- Interest -->
+    <div class="s-section" style="padding-bottom:36px;">
+      <div class="s-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 15.5q1.35 0 2.463-.737T16.15 12.8q.175-.375 0-.75t-.575-.525q-.375-.15-.737.013t-.538.537q-.3.675-.937 1.05T12 13.5t-1.362-.375t-.938-1.05q-.175-.375-.537-.537t-.738-.013q-.4.15-.575.525t0 .75q.575 1.225 1.688 1.963T12 15.5m-1.862-5.363q.362-.362.362-.887t-.363-.888T9.25 8t-.888.363T8 9.25t.363.888t.887.362t.888-.363m5.5 0Q16 9.776 16 9.25t-.363-.888T14.75 8t-.888.363t-.362.887t.363.888t.887.362t.888-.363M12 5.1q.85-1 2.025-1.55T16.5 3q2.35 0 3.925 1.575T22 8.5q0 1.05-.312 2.013t-1.075 2.075t-2.05 2.437t-3.238 3.075l-2 1.75q-.575.5-1.325.5t-1.325-.5l-2-1.75q-1.95-1.75-3.238-3.075t-2.05-2.437t-1.075-2.075T2 8.5q0-2.35 1.575-3.925T7.5 3q1.3 0 2.475.55T12 5.1"/></svg>
+        </span>
+        Interest
+      </div>
+
+
+      <div class="interests-grid">
+        <div class="interest-icon"><svg  viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 22q-1.45 0-2.475-1.025T4 18.5v-13q0-1.45 1.025-2.475T7.5 2H20v15q-.625 0-1.062.438T18.5 18.5t.438 1.063T20 20v2zm.5-7h2V4H8zm-.5 5h9.325q-.15-.35-.237-.712T16.5 18.5q0-.4.075-.775t.25-.725H7.5q-.65 0-1.075.438T6 18.5q0 .65.425 1.075T7.5 20"/></svg></div>
+
+        <div class="interest-icon"><svg  viewBox="0 0 24 24"><path fill="currentColor" d="M9.925 21.125l-2.475-4.6l-4.6-2.475l1.775-1.75l3.625.625l2.55-2.55L2.875 7l2.1-2.15l9.625 1.7l3.1-3.1q.575-.575 1.425-.575t1.425.575t.575 1.412t-.575 1.413L17.425 9.4l1.7 9.6L17 21.125L13.6 13.2l-2.55 2.55l.65 3.6z"/></svg></div>
+        <div class="interest-icon"><svg  viewBox="0 0 24 24"><path fill="currentColor" d="M15.275 12.475L11.525 8.7L14.3 5.95l-.725-.725L8.1 10.7L6.7 9.3l6.875-6.875L15.7 4.55l1.975-1.975l3.75 3.75zM6.75 21H3v-3.75l7.1-7.125l3.775 3.75z"/></svg></div>
+
+        <div class="interest-icon"><svg  viewBox="0 0 24 24"><path fill="currentColor" d="M19.55 9.45q-.775-2.175-2.525-3.637T13 4.05v1.6zM8 13.15l3-1.75V4.05q-.8.075-1.55.363T8 5.1zM4.65 15.1L6 14.3V6.75q-.975 1.1-1.487 2.45T4 12q0 .8.163 1.588T4.65 15.1M8 18.9l7-4l-3-1.75l-6.35 3.7q.5.625 1.075 1.15T8 18.9m4 1.1q1.875 0 3.55-.85t2.8-2.35L17 16.05l-6.6 3.8q.4.075.8.112T12 20m7.35-4.9q.325-.725.488-1.513T20 12l-7-4.05v3.45zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg></div>
+       <!--  <div class="interest-icon"><i class="fas fa-music"></i></div>
+        <div class="interest-icon"><i class="fas fa-pen"></i></div>
+        <div class="interest-icon"><i class="fas fa-gamepad"></i></div> -->
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="main-header">
+      <h1>Md. Kouser <span>Sarkar</span></h1>
+      <div class="subtitle">Digital Marketer &amp; AI Expert</div>
+      <div class="header-bar"></div>
+    </div>
+
+    <!-- About Me -->
+    <div class="m-section">
+      <div class="m-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+        </span>
+        About Me
+      </div>
+      <p class="about-text">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+      </p>
+    </div>
+
+    <div class="m-divider"></div>
+
+    <!-- Job Experience -->
+    <div class="m-section">
+      <div class="m-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M5 17v-7h2v7zm6 0v-7h2v7zM2 8V6l10-5l10 5v2zm0 13v-2h12.05q.05.525.125 1.013T14.4 21zm15-7.75V10h2v2.25zM20 24q-1.725-.425-2.863-1.987T16 18.55V16l4-2l4 2v2.55q0 1.9-1.137 3.463T20 24m-.725-3l3.475-3.45l-1.05-1.05l-2.425 2.375l-.975-.975l-1.05 1.075z"/></svg>
+        </span>
+        Job Experience
+      </div>
+
+      <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">Senior Web Designer</span>
+          <span class="job-date">2020 – Present</span>
+        </div>
+        <div class="job-company">Creative Agency / Chicago</div>
+        <p class="job-desc">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+      </div>
+
+      <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">Graphic Designer</span>
+          <span class="job-date">2015 – 2020</span>
+        </div>
+        <div class="job-company">Creative Market / Chicago</div>
+        <p class="job-desc">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+      </div>
+
+      <!-- <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">Marketing Manager</span>
+          <span class="job-date">2013 – 2015</span>
+        </div>
+        <div class="job-company">Manufacturing Agency / NJ</div>
+        <p class="job-desc">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.</p>
+      </div> -->
+    </div>
+
+    <div class="m-divider"></div>
+
+    <!-- Education -->
+    <div class="m-section">
+      <div class="m-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M5 13.2V17l7 4 7-4v-3.8L12 17l-7-3.8zM12 3L1 9l11 6 9-4.9V17h2V9L12 3z"/></svg>
+        </span>
+        Education
+      </div>
+
+      <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">Stanford University</span>
+          <span class="job-date">2022 – 2023</span>
+        </div>
+        <!-- <div class="job-company">Creative Agency / Chicago</div> -->
+        <p class="job-desc">Master of Business Administration (MBA) in Accounting.</p>
+      </div>
+
+      <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">National University, Bangladesh</span>
+          <span class="job-date">2016 – 2021</span>
+        </div>
+        <!-- <div class="job-company">Creative Market / Chicago</div> -->
+        <p class="job-desc">Bachelor of Business Administration (BBA) in Accounting.</p>
+      </div>
+
+      <div class="job-item">
+        <div class="job-header">
+          <span class="job-title">National Academy for Computer Training and </br> Research (NACTAR)</span>
+          <span class="job-date">2018 – 2019</span>
+        </div>
+        <!-- <div class="job-company">Manufacturing Agency / NJ</div> -->
+        <p class="job-desc">Diploma in Digital Marketing.</p>
+      </div>
+    </div>
+
+    <div class="m-divider"></div>
+
+    <!-- Skills -->
+    <div class="m-section" style="padding-bottom:36px;">
+      <div class="m-section-title">
+        <span class="icon">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </span>
+        Skills
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-label"><span>Adobe Photoshop</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Adobe Illustrator</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="75"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Microsoft Word</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>Microsoft Powerpoint</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="65"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-label"><span>HTML5 / CSS3</span></div>
+          <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="90"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+<script>
+  // Animate skill bars on load
+  window.addEventListener('load', () => {
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    requestAnimationFrame(() => {
+      bars.forEach(bar => {
+        const w = bar.getAttribute('data-w');
+        bar.style.width = w + '%';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
